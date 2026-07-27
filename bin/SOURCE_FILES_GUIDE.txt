@@ -1,0 +1,22 @@
+SOURCE FILE LOCATIONS
+
+Main Java source:
+src/main/java/com/example/logistics
+
+Scheduler source:
+src/main/java/com/example/logistics/scheduler/LogisticsScheduler.java
+
+Testing source:
+src/test/java/com/example/logistics/service/LogisticsServiceTests.java
+src/test/java/com/example/logistics/scheduler/LogisticsSchedulerTest.java
+src/test/java/com/example/logistics/LogisticsApplicationTests.java
+
+Run tests:
+mvn clean test
+
+Run application:
+mvn spring-boot:run
+
+Scheduler details:
+1. Daily shipment summary runs every day at 8:00 AM.
+2. Low-stock inventory check runs every six hours.

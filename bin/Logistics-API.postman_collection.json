@@ -1,0 +1,374 @@
+{
+  "info": {
+    "name": "Logistics Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "Create Customer",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/customers",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Surendra\",\n  \"email\": \"surendra@example.com\",\n  \"phone\": \"9876543210\",\n  \"address\": \"Hyderabad, Telangana\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Customers",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/customers"
+          }
+        },
+        {
+          "name": "Get Customer By ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/customers/1"
+          }
+        },
+        {
+          "name": "Update Customer",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/customers/1",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Surendra\",\n  \"email\": \"surendra@example.com\",\n  \"phone\": \"9876543210\",\n  \"address\": \"Hyderabad, Telangana\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Customer",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/customers/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Warehouses",
+      "item": [
+        {
+          "name": "Create Warehouse",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/warehouses",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Hyderabad Central Warehouse\",\n  \"location\": \"Hyderabad\",\n  \"capacity\": 5000\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Warehouses",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/warehouses"
+          }
+        },
+        {
+          "name": "Get Warehouse By ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/warehouses/1"
+          }
+        },
+        {
+          "name": "Update Warehouse",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/warehouses/1",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Hyderabad Central Warehouse\",\n  \"location\": \"Hyderabad\",\n  \"capacity\": 5000\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Warehouse",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/warehouses/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Inventory",
+      "item": [
+        {
+          "name": "Create Inventory",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/inventory",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"itemName\": \"Laptop\",\n  \"sku\": \"LAP-1001\",\n  \"quantity\": 25,\n  \"unitPrice\": 55000.0,\n  \"warehouseId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Inventory",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/inventory"
+          }
+        },
+        {
+          "name": "Get Inventory By ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/inventory/1"
+          }
+        },
+        {
+          "name": "Update Inventory",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/inventory/1",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"itemName\": \"Laptop\",\n  \"sku\": \"LAP-1001\",\n  \"quantity\": 25,\n  \"unitPrice\": 55000.0,\n  \"warehouseId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Inventory",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/inventory/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Shipments",
+      "item": [
+        {
+          "name": "Create Shipment",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/shipments",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trackingNumber\": \"TRK-2026-0001\",\n  \"origin\": \"Hyderabad\",\n  \"destination\": \"Vijayawada\",\n  \"weight\": 3.5,\n  \"status\": \"CREATED\",\n  \"expectedDeliveryDate\": \"2026-07-25\",\n  \"customerId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Shipments",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/shipments"
+          }
+        },
+        {
+          "name": "Get Shipment By ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/shipments/1"
+          }
+        },
+        {
+          "name": "Update Shipment",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/shipments/1",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trackingNumber\": \"TRK-2026-0001\",\n  \"origin\": \"Hyderabad\",\n  \"destination\": \"Vijayawada\",\n  \"weight\": 3.5,\n  \"status\": \"CREATED\",\n  \"expectedDeliveryDate\": \"2026-07-25\",\n  \"customerId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Shipment",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/shipments/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tracking",
+      "item": [
+        {
+          "name": "Create Tracking",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/tracking",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"location\": \"Hyderabad Hub\",\n  \"status\": \"IN_TRANSIT\",\n  \"updatedAt\": \"2026-07-21T11:30:00\",\n  \"remarks\": \"Shipment left origin hub\",\n  \"shipmentId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Tracking",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/tracking"
+          }
+        },
+        {
+          "name": "Get Tracking By ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/tracking/1"
+          }
+        },
+        {
+          "name": "Update Tracking",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/tracking/1",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"location\": \"Hyderabad Hub\",\n  \"status\": \"IN_TRANSIT\",\n  \"updatedAt\": \"2026-07-21T11:30:00\",\n  \"remarks\": \"Shipment left origin hub\",\n  \"shipmentId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Tracking",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/tracking/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Delivery",
+      "item": [
+        {
+          "name": "Create Delivery",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/delivery",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deliveryDate\": \"2026-07-25T16:00:00\",\n  \"receivedBy\": \"Ravi\",\n  \"status\": \"DELIVERED\",\n  \"notes\": \"Delivered safely\",\n  \"shipmentId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Delivery",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/delivery"
+          }
+        },
+        {
+          "name": "Get Delivery By ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/delivery/1"
+          }
+        },
+        {
+          "name": "Update Delivery",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/delivery/1",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deliveryDate\": \"2026-07-25T16:00:00\",\n  \"receivedBy\": \"Ravi\",\n  \"status\": \"DELIVERED\",\n  \"notes\": \"Delivered safely\",\n  \"shipmentId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Delivery",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/delivery/1"
+          }
+        }
+      ]
+    }
+  ]
+}
