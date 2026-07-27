@@ -1,91 +1,179 @@
-# Logistics Management System
+Logistics Management System
 
-## Scheduler
+A beginner-friendly Logistics Management REST API developed using Java, Spring Boot, Spring Data JPA, and MySQL.
 
-- Daily shipment summary: runs every day at 8:00 AM.
-- Low-stock inventory check: runs every six hours and reports items with quantity 10 or lower.
-- Source: `src/main/java/com/example/logistics/scheduler/LogisticsScheduler.java`
+This project manages customers, warehouses, inventory, shipments, tracking information, and deliveries.
 
-## Testing
+Main Features
+Add, view, update, and delete customers
+Manage warehouse details
+Manage warehouse inventory
+Create and update shipments
+Track shipment locations and status
+Store delivery information
+Validate request data
+Handle errors using global exception handling
+Store all data in MySQL
+Test APIs using Postman
+Technologies Used
+Java 17
+Spring Boot 3.3.5
+Spring Web
+Spring Data JPA
+Hibernate
+MySQL
+Maven
+Bean Validation
+Postman
+Project Modules
+Customer
+Warehouse
+Inventory
+Shipment
+Tracking
+Delivery
+Relationships
+One customer can have many shipments.
+One warehouse can have many inventory items.
+One shipment can have many tracking updates.
+One shipment can have one delivery.
+Requirements
 
-The project includes beginner-friendly JUnit 5 and Mockito tests for:
+Install the following software:
 
-- Customer service
-- Warehouse service
-- Inventory service
-- Shipment service
-- Tracking service
-- Delivery service
-- Scheduler
+Java 17
+MySQL Server
+Maven
+Eclipse, IntelliJ IDEA, or Spring Tool Suite
+Postman
+Database Setup
 
-Run all tests:
+Open MySQL Workbench and run:
 
-```bash
-mvn clean test
-```
+CREATE DATABASE logistics_db;
 
-Test source is available under `src/test/java/com/example/logistics`.
+Open the application.properties file and enter your MySQL username and password:
 
-Spring Boot REST API created from the uploaded Logistics API documentation.
+spring.application.name=logistics-management-system
+server.port=8080
 
-## Technology
-- Java 17
-- Spring Boot 3
-- Spring Web
-- Spring Data JPA
-- Bean Validation
-- MySQL
-- Maven
+spring.datasource.url=jdbc:mysql://localhost:3306/logistics_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+spring.datasource.username=root
+spring.datasource.password=root
 
-## Setup
-1. Install Java 17, MySQL and Maven.
-2. Open `src/main/resources/application.properties`.
-3. Change `spring.datasource.username` and `spring.datasource.password` to your MySQL credentials.
-4. Run `database.sql`, or allow the application URL to create `logistics_db` automatically.
-5. From the project folder run:
-   ```bash
-   mvn spring-boot:run
-   ```
-6. Base URL: `http://localhost:8080`
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
 
-## Relationships
-- Customer → many Shipments
-- Warehouse → many Inventory items
-- Shipment → many Tracking updates
-- Shipment → one Delivery
+If your MySQL password is not root, replace it with your correct password.
 
-## Recommended creation order
+How to Run the Project
+Download or clone this repository.
+Import the project into Eclipse as an Existing Maven Project.
+Start MySQL Server.
+Open LogisticsApplication.java.
+Right-click and select Run As → Spring Boot App.
+The application will start on port 8080.
+
+Base URL:
+
+http://localhost:8080
+Recommended Creation Order
+
+Create data in this order:
+
 Customer → Warehouse → Inventory → Shipment → Tracking → Delivery
+API Endpoints
+Customer APIs
+POST   /api/customers
+GET    /api/customers
+GET    /api/customers/{id}
+PUT    /api/customers/{id}
+DELETE /api/customers/{id}
+Warehouse APIs
+POST   /api/warehouses
+GET    /api/warehouses
+GET    /api/warehouses/{id}
+PUT    /api/warehouses/{id}
+DELETE /api/warehouses/{id}
+Inventory APIs
+POST   /api/inventory
+GET    /api/inventory
+GET    /api/inventory/{id}
+PUT    /api/inventory/{id}
+DELETE /api/inventory/{id}
+Shipment APIs
+POST   /api/shipments
+GET    /api/shipments
+GET    /api/shipments/{id}
+PUT    /api/shipments/{id}
+DELETE /api/shipments/{id}
+Tracking APIs
+POST   /api/tracking
+GET    /api/tracking
+GET    /api/tracking/{id}
+PUT    /api/tracking/{id}
+DELETE /api/tracking/{id}
+Delivery APIs
+POST   /api/delivery
+GET    /api/delivery
+GET    /api/delivery/{id}
+PUT    /api/delivery/{id}
+DELETE /api/delivery/{id}
+Sample Customer JSON
+{
+  "name": "Surendra",
+  "email": "surendra@example.com",
+  "phone": "9876543210",
+  "address": "Hyderabad, Telangana"
+}
+Sample Warehouse JSON
+{
+  "name": "Hyderabad Central Warehouse",
+  "location": "Hyderabad",
+  "capacity": 5000
+}
+Sample Inventory JSON
+{
+  "itemName": "Laptop",
+  "sku": "LAP-1001",
+  "quantity": 25,
+  "unitPrice": 55000.00,
+  "warehouseId": 1
+}
+Sample Shipment JSON
+{
+  "trackingNumber": "TRK-2026-0001",
+  "origin": "Hyderabad",
+  "destination": "Vijayawada",
+  "weight": 3.5,
+  "status": "CREATED",
+  "expectedDeliveryDate": "2026-07-30",
+  "customerId": 1
+}
+Sample Tracking JSON
+{
+  "location": "Hyderabad Hub",
+  "status": "IN_TRANSIT",
+  "updatedAt": "2026-07-27T11:30:00",
+  "remarks": "Shipment left the origin hub",
+  "shipmentId": 1
+}
+Sample Delivery JSON
+{
+  "deliveryDate": "2026-07-30T16:00:00",
+  "receivedBy": "Ravi",
+  "status": "DELIVERED",
+  "notes": "Delivered safely",
+  "shipmentId": 1
+}
+Postman Testing
+Start the Spring Boot application.
+Open Postman.
+Click Import.
+Select Logistics-API.postman_collection.json.
+Select an API request.
+Click Send.
+Check the response and status code.
+Author
 
-## JSON examples
-### Customer: POST /api/customers
-```json
-{"name":"Surendra","email":"surendra@example.com","phone":"9876543210","address":"Hyderabad, Telangana"}
-```
-### Warehouse: POST /api/warehouses
-```json
-{"name":"Hyderabad Central Warehouse","location":"Hyderabad","capacity":5000}
-```
-### Inventory: POST /api/inventory
-```json
-{"itemName":"Laptop","sku":"LAP-1001","quantity":25,"unitPrice":55000.00,"warehouseId":1}
-```
-### Shipment: POST /api/shipments
-```json
-{"trackingNumber":"TRK-2026-0001","origin":"Hyderabad","destination":"Vijayawada","weight":3.5,"status":"CREATED","expectedDeliveryDate":"2026-07-25","customerId":1}
-```
-### Tracking: POST /api/tracking
-```json
-{"location":"Hyderabad Hub","status":"IN_TRANSIT","updatedAt":"2026-07-21T11:30:00","remarks":"Shipment left the origin hub","shipmentId":1}
-```
-### Delivery: POST /api/delivery
-```json
-{"deliveryDate":"2026-07-25T16:00:00","receivedBy":"Ravi","status":"DELIVERED","notes":"Delivered safely","shipmentId":1}
-```
-
-## Enum values
-Shipment: `CREATED`, `PICKED_UP`, `IN_TRANSIT`, `OUT_FOR_DELIVERY`, `DELIVERED`, `CANCELLED`
-Tracking: `PICKED_UP`, `IN_TRANSIT`, `ARRIVED_AT_WAREHOUSE`, `OUT_FOR_DELIVERY`, `DELIVERED`, `DELAYED`
-Delivery: `PENDING`, `DELIVERED`, `FAILED`
-
-Every module supports POST, GET all, GET by ID, PUT, and DELETE endpoints exactly as listed in the presentation.
+Surendra
