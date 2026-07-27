@@ -174,6 +174,3 @@ Select Logistics-API.postman_collection.json.
 Select an API request.
 Click Send.
 Check the response and status code.
-Author
-
-Surendra
